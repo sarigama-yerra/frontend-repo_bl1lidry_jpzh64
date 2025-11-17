@@ -1,0 +1,21 @@
+
+> vibe-generated-app@1.0.0 dev
+> vite
+
+
+  VITE v5.4.20  ready in 230 ms
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: http://172.20.34.171:3000/
+11:54:27 PM [vite] warning: The character ">" is not valid inside a JSX element
+36 |            </Step>
+37 |            <Step number={3} title="Risk Scored & Blocked" icon={<Zap size={20} />}> 
+38 |              If risk > threshold, we block and replace with a safe message.
+   |                      ^
+39 |            </Step>
+40 |            <Step number={4} title="Human Review & Learn" icon={<CheckCircle2 size={20} />}> 
+
+  Plugin: vite:esbuild
+  File: /home/workspace/src/components/HowItWorks.jsx
+11:54:28 PM [vite] ✨ new dependencies optimized: framer-motion, lucide-react, @splinetool/react-spline
+11:54:28 PM [vite] ✨ optimized dependencies changed. reloading
