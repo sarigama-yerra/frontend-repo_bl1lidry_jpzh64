@@ -1,42 +1,43 @@
-import Hero from './components/Hero'
-import SocialProof from './components/SocialProof'
-import Problem from './components/Problem'
-import HowItWorks from './components/HowItWorks'
-import CTA from './components/CTA'
+import TechHero from './components/TechHero'
+import SegmentsMarquee from './components/SegmentsMarquee'
+import FloatingClients from './components/FloatingClients'
+import GlobalPresence from './components/GlobalPresence'
+import Philosophy from './components/Philosophy'
 
 function App() {
   return (
-    <div className="min-h-screen" style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
+    <div className="min-h-screen bg-black text-white" style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
       {/* Navbar */}
-      <header className="sticky top-0 z-30 backdrop-blur supports-[backdrop-filter]:bg-white/60 bg-white/70 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 h-16 flex items-center justify-between">
+      <header className="sticky top-0 z-30 border-b border-white/10 bg-black/70 backdrop-blur">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 sm:px-8">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-md" style={{ backgroundColor: '#EF4444' }} />
-            <div className="text-slate-900 font-semibold">HallucinationGuard</div>
+            <div className="h-7 w-7 rounded-md bg-gradient-to-br from-red-500 to-sky-500 shadow-[0_0_20px_rgba(239,68,68,0.6)]" />
+            <div className="font-semibold">HallucinationGuard</div>
           </div>
-          <div className="hidden md:flex items-center gap-6 text-sm text-slate-600">
-            <a href="#how" className="hover:text-slate-900">How it works</a>
-            <a href="#cta" className="hover:text-slate-900">Pricing</a>
-            <a href="#" className="hover:text-slate-900">Docs</a>
-            <a href="#cta" className="px-4 py-2 rounded-lg text-white" style={{ backgroundColor: '#EF4444' }}>Get a demo</a>
-          </div>
+          <nav className="hidden items-center gap-6 text-sm text-white/70 md:flex">
+            <a href="#build" className="hover:text-white">What we build</a>
+            <a href="#clients" className="hover:text-white">Clients</a>
+            <a href="#global" className="hover:text-white">Global</a>
+            <a href="#contact" className="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-white hover:bg-white/10">Get a demo</a>
+          </nav>
         </div>
       </header>
 
-      <Hero />
-      <SocialProof />
-      <Problem />
-      <HowItWorks />
-      <CTA />
+      {/* Sections */}
+      <TechHero />
+      <div id="build"><SegmentsMarquee /></div>
+      <div id="clients"><FloatingClients /></div>
+      <div id="global"><GlobalPresence /></div>
+      <Philosophy />
 
       {/* Footer */}
-      <footer className="bg-white border-t">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 py-10 text-sm text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <footer id="contact" className="border-t border-white/10 bg-black/80">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-10 text-sm text-white/60 sm:flex-row sm:px-8">
           <div className="flex items-center gap-3">
-            <div className="w-6 h-6 rounded-md" style={{ backgroundColor: '#EF4444' }} />
-            <span className="font-semibold text-slate-900">HallucinationGuard</span>
+            <div className="h-6 w-6 rounded-md bg-gradient-to-br from-red-500 to-sky-500" />
+            <span className="font-semibold text-white">HallucinationGuard</span>
           </div>
-          <div className="text-slate-500">© {new Date().getFullYear()} HallucinationGuard Inc. All rights reserved.</div>
+          <div>© {new Date().getFullYear()} HallucinationGuard Inc. All rights reserved.</div>
         </div>
       </footer>
     </div>
