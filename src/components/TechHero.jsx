@@ -1,19 +1,27 @@
-import { useEffect } from 'react'
-import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { motion, useMotionValue, animate } from 'framer-motion'
 
 function Counter({ from = 0, to = 100, duration = 2, suffix = '' }) {
   const count = useMotionValue(from)
-  const rounded = useTransform(count, latest => Math.floor(latest))
+  const [display, setDisplay] = useState(from)
 
   useEffect(() => {
+    // Animate the motion value
     const controls = animate(count, to, { duration, ease: 'easeOut' })
-    return controls.stop
+    // Subscribe to changes and push into React state for safe text rendering
+    const unsubscribe = count.on('change', (latest) => {
+      const isFloatTarget = Math.abs(to % 1) > 0
+      const value = isFloatTarget ? Number(latest).toFixed(1) : Math.floor(Number(latest))
+      setDisplay(value)
+    })
+    return () => {
+      controls.stop()
+      unsubscribe()
+    }
   }, [to, duration, count])
 
   return (
-    <motion.span className="tabular-nums">
-      {rounded} {suffix}
-    </motion.span>
+    <span className="tabular-nums">{display}{suffix}</span>
   )
 }
 
@@ -45,7 +53,7 @@ export default function TechHero() {
             {/* Stats */}
             <div className="mt-10 grid w-full grid-cols-2 gap-6 sm:grid-cols-3">
               <div className="rounded-xl border border-white/10 bg-white/5 p-5 backdrop-blur">
-                <div className="text-3xl font-semibold"><Counter to={200} duration={2.4} />M+</div>
+                <div className="text-3xl font-semibold"><Counter to={200} duration={2.4} suffix="" />M+</div>
                 <div className="mt-1 text-xs uppercase tracking-wider text-white/60">Users</div>
               </div>
               <div className="rounded-xl border border-white/10 bg-white/5 p-5 backdrop-blur">
